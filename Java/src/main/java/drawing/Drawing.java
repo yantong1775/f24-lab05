@@ -30,10 +30,13 @@ public class Drawing {
      */
     public void draw(String format, String filename) {
         // TODO: Do you notice any issues here?
+        // Delegate the work to a writer object.
         if (format.equals("jpeg")) {
             try (Writer writer = new JPEGWriter(filename + ".jpeg")) {
                 for (Shape shape : this.shapes) {
                     // TODO: What is the issue of the behavior here?
+                    
+                    // let the shape do the work. Dont't do the work for the shape.
                     Line[] lines = shape.toLines();
                     shape.draw(writer, lines);
                 }
